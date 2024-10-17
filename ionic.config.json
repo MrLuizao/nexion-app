@@ -1,0 +1,8 @@
+{
+  "name": "nexion-app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular",
+  "id": "698a7c38"
+}
