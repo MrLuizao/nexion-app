@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { BehaviorSubject, Observable, of, tap } from 'rxjs';
+import { BehaviorSubject, delay, Observable, of, tap } from 'rxjs';
 import { DecodedToken, LoginRequest, LoginResponse } from 'src/app/shared/interfaces/auth.interfaces';
 
 @Injectable({
@@ -18,8 +18,6 @@ export class AuthenticationService {
   }
 
   login(credentials: LoginRequest): Observable<LoginResponse> {
-    // Simulamos una llamada al backend
-    // En un caso real, esto sería una llamada HTTP a tu backend
     return of({
       user: {
         id: 1,
@@ -28,6 +26,7 @@ export class AuthenticationService {
       },
       token: this.generateDemoToken(credentials)
     }).pipe(
+      delay(2000),
       tap(response => {
         this.setToken(response.token);
         this.isAuthenticatedSubject.next(true);
@@ -83,8 +82,6 @@ export class AuthenticationService {
   }
 
   private generateDemoToken(credentials: LoginRequest): string {
-    // Este es un token JWT de demostración
-    // En un caso real, el token vendría del backend
     return 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwiZW1haWwiOiJ1c2VyQGV4YW1wbGUuY29tIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c';
   }
 

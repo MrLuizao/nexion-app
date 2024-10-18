@@ -23,7 +23,7 @@ export class LoginFormComponent  implements OnInit {
   }
 
   ngOnInit() {
-    // this.createForm();
+    this.createForm();
   }
 
   private createForm(): void {
@@ -36,14 +36,13 @@ export class LoginFormComponent  implements OnInit {
   onLogin(): void {
     if (this.loginForm.valid) {
       this.isLoading = true;
-      return
+
       this.authService.login(this.loginForm.value).subscribe({
         next: () => {
           this.router.navigate(['/home']);
         },
         error: (error) => {
           console.error('Error en login:', error);
-          // Aquí podrías mostrar un mensaje de error al usuario
           this.isLoading = false;
         },
         complete: () => {
@@ -58,15 +57,6 @@ export class LoginFormComponent  implements OnInit {
         }
       });
     }
-  }
-
-  // Getters para acceder fácilmente a los form controls
-  get emailControl() {
-    return this.loginForm.get('email');
-  }
-
-  get passwordControl() {
-    return this.loginForm.get('password');
   }
   
 }
