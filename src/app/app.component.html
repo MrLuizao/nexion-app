@@ -3,10 +3,11 @@
     <ion-menu contentId="main-content" type="overlay">
       <ion-content>
         <ion-list id="inbox-list">
-          <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
-            <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected">
-              <ion-icon aria-hidden="true" slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
-              <ion-label>{{ p.title }}</ion-label>
+          <ion-menu-toggle auto-hide="false">
+            <ion-item detail="false">
+              <ion-button id="present-alert" fill="clear" expand="full">
+                <ion-label>Cerrar sesión</ion-label>
+              </ion-button>
             </ion-item>
           </ion-menu-toggle>
         </ion-list>
@@ -16,3 +17,5 @@
     <ion-router-outlet id="main-content"></ion-router-outlet>
   </ion-split-pane>
 </ion-app>
+
+<ion-alert trigger="present-alert" class="custom-alert" header="La sesión se va a cerrar" [buttons]="alertButtons"></ion-alert>

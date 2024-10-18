@@ -29,7 +29,6 @@ export class TableDataComponent  implements OnInit {
 
   constructor( private listDataService: ListRestService, public modalController: ModalController) { }
 
-
   ngOnInit() {
     this.isLoading = true;
     this.loadCountries();
@@ -173,6 +172,77 @@ export class TableDataComponent  implements OnInit {
     } else {
       // Puedes mostrar un mensaje de error si las fechas no están seleccionadas
     }
+  }
+
+  onFilterChange(filters: any) {
+    this.filterText = filters.filterText || '';
+    this.startDate = filters.startDate;
+    this.endDate = filters.endDate;
+    this.selectedRegions = filters.selectedRegions;
+    
+    this.applyAllFilters();
+  }
+
+  async onDatePickerOpen() {
+    const modal = await this.modalController.create({
+      component: ModalDateComponent,
+    });
+
+    modal.onDidDismiss().then((result) => {
+      if (result.data) {
+        this.startDate = result.data.startDate;
+        this.endDate = result.data.endDate;
+        this.applyAllFilters();
+      }
+    });
+
+    return await modal.present();
+  }
+
+  async onRegionPickerOpen() {
+    const modal = await this.modalController.create({
+      component: ModalCheckComponent,
+    });
+
+    modal.onDidDismiss().then((result) => {
+      if (result.data) {
+        this.selectedRegions = result.data.selectedRegions;
+        this.applyAllFilters();
+      }
+    });
+
+    return await modal.present();
+  }
+
+  private applyAllFilters() {
+    this.filteredCountries = [...this.countries];
+
+    if (this.filterText) {
+      this.filteredCountries = this.filteredCountries.filter(country =>
+        country.name.common.toLowerCase().includes(this.filterText.toLowerCase())
+      );
+    }
+
+    // Aplicar filtro de regiones
+    if (this.selectedRegions && this.selectedRegions.length > 0) {
+      this.filteredCountries = this.filteredCountries.filter(country => 
+        this.selectedRegions.includes(country.region)
+      );
+    }
+
+    // Aplicar filtro de fechas
+    if (this.startDate && this.endDate) {
+      const start = new Date(this.startDate);
+      const end = new Date(this.endDate);
+      this.filteredCountries = this.filteredCountries.filter((country) => {
+        const countryDate = new Date(country.date);
+        return countryDate >= start && countryDate <= end;
+      });
+    }
+
+    // Resetear la paginación
+    this.currentPage = 0;
+    this.updatePaginatedCountries();
   }
 
 }

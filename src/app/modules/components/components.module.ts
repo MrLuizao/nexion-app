@@ -7,7 +7,7 @@ import { TableDataComponent } from './table-data/table-data.component';
 import { ModalDateComponent } from './modal-date/modal-date.component';
 import { ModalCheckComponent } from './modal-check/modal-check.component';
 import { PaginateTableComponent } from './paginate-table/paginate-table.component';
-
+import { FilterInputComponent } from './filter-input/filter-input.component';
 
 
 @NgModule({
@@ -16,7 +16,8 @@ import { PaginateTableComponent } from './paginate-table/paginate-table.componen
     TableDataComponent,
     ModalDateComponent,
     ModalCheckComponent,
-    PaginateTableComponent
+    PaginateTableComponent,
+    FilterInputComponent
   ],
   imports: [
     CommonModule,
@@ -29,7 +30,8 @@ import { PaginateTableComponent } from './paginate-table/paginate-table.componen
     TableDataComponent,
     ModalDateComponent,
     ModalCheckComponent,
-    PaginateTableComponent
+    PaginateTableComponent,
+    FilterInputComponent
   ]
 })
 export class ComponentsModule { }

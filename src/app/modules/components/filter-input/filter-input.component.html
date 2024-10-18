@@ -1,0 +1,64 @@
+<article>
+  <ion-item>
+    <ion-input
+      label="Filtrar por país"
+      label-placement="floating"
+      [clearInput]="true"
+      [(ngModel)]="filterText"
+      (ionInput)="onTextFilterChange()"
+      type="text"
+      mode="md"
+    >
+    </ion-input>
+  </ion-item>
+
+  <ion-button fill="clear" (click)="toggleFilters()" mode="md">
+    <ion-icon name="filter-sharp"></ion-icon>
+  </ion-button>
+</article>
+
+<div class="hidden" *ngIf="!hidden">
+  <div class="chips">
+    <ion-chip 
+      color="primary" 
+      (click)="openDatePickerModal()"
+      *ngIf="!startDate && !endDate"
+    >
+      Filtro por Fecha
+    </ion-chip>
+    
+    <ion-chip 
+      color="primary" 
+      (click)="openCheckModal()"
+      *ngIf="!selectedRegions"
+    >
+      Filtro por Continente
+    </ion-chip>
+
+    <ion-chip *ngIf="startDate && endDate">
+      <ion-label>
+        {{startDate | date: 'M/d/yy'}} - {{endDate | date: 'M/d/yy'}}
+      </ion-label>
+      <ion-icon 
+        name="close" 
+        (click)="clearDateFilter()"
+      ></ion-icon>
+    </ion-chip>
+
+    <ion-chip *ngIf="selectedRegions">
+      <ion-label>{{selectedRegions}}</ion-label>
+      <ion-icon 
+        name="close" 
+        (click)="clearRegionFilter()"
+      ></ion-icon>
+    </ion-chip>
+  </div>
+
+  <ion-button 
+    expand="full" 
+    mode="md" 
+    (click)="applyFilters()"
+  >
+    Aplicar filtros
+  </ion-button>
+</div>

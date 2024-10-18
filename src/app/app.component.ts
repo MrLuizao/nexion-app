@@ -1,18 +1,39 @@
 import { Component } from '@angular/core';
+import { AuthenticationService } from './core/services/authentication.service';
+import { Router } from '@angular/router';
+import { ToastController } from '@ionic/angular';
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  public appPages = [
-    { title: 'Inbox', url: '/folder/inbox', icon: 'mail' },
-    { title: 'Outbox', url: '/folder/outbox', icon: 'paper-plane' },
-    { title: 'Favorites', url: '/folder/favorites', icon: 'heart' },
-    { title: 'Archived', url: '/folder/archived', icon: 'archive' },
-    { title: 'Trash', url: '/folder/trash', icon: 'trash' },
-    { title: 'Spam', url: '/folder/spam', icon: 'warning' },
+
+  constructor(private authService: AuthenticationService, public router: Router, private toastController: ToastController) {}
+
+  public alertButtons = [
+    {
+      text: 'Cancelar',
+      cssClass: 'alert-button-cancel',
+    },
+    {
+      text: 'Confirmar',
+      handler: () => {
+        this.authService.logout();
+        this.router.navigateByUrl("");
+        this.showConfirmAlert("Se cerró la sesión", "warning")
+      }
+    },
   ];
 
-  constructor() {}
+  async showConfirmAlert(msg: string, type: string){
+    const toast = await this.toastController.create({
+      message: msg,
+      duration: 2000, 
+      position: 'bottom',
+      color: type,
+    });
+    toast.present();
+  }
 }

@@ -37,6 +37,7 @@ export class AuthenticationService {
   logout(): void {
     localStorage.removeItem(this.JWT_TOKEN_KEY);
     this.isAuthenticatedSubject.next(false);
+    localStorage.clear();
   }
 
   isAuthenticated$(): Observable<boolean> {
