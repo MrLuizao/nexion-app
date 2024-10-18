@@ -13,7 +13,7 @@ export class TableDataComponent  implements OnInit {
   countries: any[] = []; 
   totalCountries: any;
   filteredCountries: any[] = []; 
-  paginatedCountries: any[] = []; 
+  paginatedCountries: any[] = [];  
   filterText: string = '';
   currentPage: number = 0;
   itemsPerPage: number = 10;
