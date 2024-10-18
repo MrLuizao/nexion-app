@@ -93,33 +93,10 @@ export class TableDataComponent  implements OnInit {
     this.currentPage = 0; 
     this.updatePaginatedCountries();
   }
-  
-  goToFirstPage() {
-    this.currentPage = 0;
+
+  onPageChange(newPage: number) {
+    this.currentPage = newPage;
     this.updatePaginatedCountries();
-  }
-
-  goToLastPage() {
-    this.currentPage = this.getTotalPages() - 1;
-    this.updatePaginatedCountries();
-  }
-
-  prevPage() {
-    if (this.currentPage > 0) {
-      this.currentPage--;
-      this.updatePaginatedCountries();
-    }
-  }
-
-  nextPage() {
-    if ((this.currentPage + 1) * this.itemsPerPage < this.filteredCountries.length) {
-      this.currentPage++;
-      this.updatePaginatedCountries();
-    }
-  }
-
-  getTotalPages() {
-    return Math.ceil(this.filteredCountries.length / this.itemsPerPage);
   }
 
   getCountryFlagUrl(cca2: string): string {

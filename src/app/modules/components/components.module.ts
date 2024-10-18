@@ -6,6 +6,7 @@ import { IonicModule } from '@ionic/angular';
 import { TableDataComponent } from './table-data/table-data.component';
 import { ModalDateComponent } from './modal-date/modal-date.component';
 import { ModalCheckComponent } from './modal-check/modal-check.component';
+import { PaginateTableComponent } from './paginate-table/paginate-table.component';
 
 
 
@@ -14,7 +15,8 @@ import { ModalCheckComponent } from './modal-check/modal-check.component';
     LoginFormComponent,
     TableDataComponent,
     ModalDateComponent,
-    ModalCheckComponent
+    ModalCheckComponent,
+    PaginateTableComponent
   ],
   imports: [
     CommonModule,
@@ -26,7 +28,8 @@ import { ModalCheckComponent } from './modal-check/modal-check.component';
     LoginFormComponent,
     TableDataComponent,
     ModalDateComponent,
-    ModalCheckComponent
+    ModalCheckComponent,
+    PaginateTableComponent
   ]
 })
 export class ComponentsModule { }

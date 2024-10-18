@@ -39,9 +39,7 @@
 </div>
 
 <ion-card>
-
   <ion-card-content>
-
     <ion-list *ngIf="paginatedCountries.length > 0">
       <ion-item *ngFor="let country of paginatedCountries">
         <ion-avatar slot="start">
@@ -51,24 +49,13 @@
       </ion-item>
     </ion-list>
 
-    <section>
-      <ion-button fill="clear" (click)="goToFirstPage()" [disabled]="currentPage === 0">
-        |<ion-icon name="chevron-back-outline"></ion-icon>
-      </ion-button>
-      
-      <ion-button fill="clear" (click)="prevPage()" [disabled]="currentPage === 0">
-        <ion-icon name="chevron-back-outline"></ion-icon>
-      </ion-button>
+    <app-paginate-table
+      [currentPage]="currentPage"
+      [itemsPerPage]="itemsPerPage"
+      [totalItems]="filteredCountries.length"
+      (pageChange)="onPageChange($event)"
+    ></app-paginate-table>
 
-      <span>Página {{ currentPage + 1 }} de {{ getTotalPages() }}</span>
-
-      <ion-button fill="clear" (click)="nextPage()" [disabled]="(currentPage + 1) * itemsPerPage >= filteredCountries.length">
-        <ion-icon name="chevron-forward-outline"></ion-icon>
-      </ion-button>
-      <ion-button fill="clear" (click)="goToLastPage()" [disabled]="(currentPage + 1) * itemsPerPage >= filteredCountries.length">
-        <ion-icon name="chevron-forward-outline"></ion-icon>|
-      </ion-button>
-    </section>
   </ion-card-content>
 </ion-card>
 
