@@ -1,0 +1,48 @@
+<ion-card>
+  <ion-card-header>
+    <ion-input
+      label="Filtrar por país"
+      label-placement="floating"
+      [clearInput]="true"
+      [(ngModel)]="filterText"
+      (ionInput)="filterCountries()" 
+      type="text" 
+      fill="outline"
+      mode="md"
+    >
+    </ion-input>
+
+  </ion-card-header>
+
+  <ion-card-content>
+
+    <ion-list *ngIf="paginatedCountries.length > 0">
+      <ion-item *ngFor="let country of paginatedCountries">
+        <ion-avatar slot="start">
+          <img [src]="getCountryFlagUrl(country.cca2)" alt="Flag of {{ country.name.common }}" />
+        </ion-avatar>
+        <ion-label>{{ country.name.common }}</ion-label>
+      </ion-item>
+    </ion-list>
+
+    <section>
+      <ion-button fill="clear" (click)="goToFirstPage()" [disabled]="currentPage === 0">
+        |<ion-icon name="chevron-back-outline"></ion-icon>
+      </ion-button>
+      
+      <ion-button fill="clear" (click)="prevPage()" [disabled]="currentPage === 0">
+        <ion-icon name="chevron-back-outline"></ion-icon>
+      </ion-button>
+
+      <span>Página {{ currentPage + 1 }} de {{ getTotalPages() }}</span>
+
+      <ion-button fill="clear" (click)="nextPage()" [disabled]="(currentPage + 1) * itemsPerPage >= filteredCountries.length">
+        <ion-icon name="chevron-forward-outline"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear" (click)="goToLastPage()" [disabled]="(currentPage + 1) * itemsPerPage >= filteredCountries.length">
+        <ion-icon name="chevron-forward-outline"></ion-icon>|
+      </ion-button>
+    </section>
+  </ion-card-content>
+</ion-card>
+
