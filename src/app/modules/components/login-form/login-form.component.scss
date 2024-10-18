@@ -1,0 +1,21 @@
+form {
+
+    ion-button {
+        margin-top: 1rem;
+    }
+    .error-msg {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+    }
+
+    section{
+        display: flex;
+        justify-content: center;
+        margin-top: 12px;
+
+        ion-spinner{
+            width: 30px;
+            height: 30px;
+        }
+    }
+}
