@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Seleccionar Rango de Fechas</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()">Cerrar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div>
+    <ion-label color="primary">Fecha de Inicio</ion-label>
+    <ion-datetime [(ngModel)]="startDate" presentation="date"></ion-datetime>
+
+    <ion-label color="primary">Fecha de Fin</ion-label>
+    <ion-datetime [(ngModel)]="endDate" presentation="date"></ion-datetime>
+
+    <ion-button expand="full" (click)="accept()">Aceptar</ion-button>
+  </div>
+</ion-content>
+

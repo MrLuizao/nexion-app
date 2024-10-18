@@ -4,13 +4,17 @@ import { LoginFormComponent } from './login-form/login-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { TableDataComponent } from './table-data/table-data.component';
+import { ModalDateComponent } from './modal-date/modal-date.component';
+import { ModalCheckComponent } from './modal-check/modal-check.component';
 
 
 
 @NgModule({
   declarations: [
     LoginFormComponent,
-    TableDataComponent
+    TableDataComponent,
+    ModalDateComponent,
+    ModalCheckComponent
   ],
   imports: [
     CommonModule,
@@ -20,7 +24,9 @@ import { TableDataComponent } from './table-data/table-data.component';
   ],
   exports: [
     LoginFormComponent,
-    TableDataComponent
+    TableDataComponent,
+    ModalDateComponent,
+    ModalCheckComponent
   ]
 })
 export class ComponentsModule { }

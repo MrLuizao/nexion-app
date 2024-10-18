@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Seleccionar Continentes</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="modalController.dismiss()">Cerrar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="ion-padding">
+  <ion-list>
+    <ion-item *ngFor="let region of regions">
+      <ion-label>{{ region }}</ion-label>
+      <ion-checkbox slot="start" [(ngModel)]="selectedRegions[region]"></ion-checkbox>
+    </ion-item>
+  </ion-list>
+
+  <ion-button mode="md" expand="full" (click)="setElements()">Aceptar</ion-button>
+
+</ion-content>
+

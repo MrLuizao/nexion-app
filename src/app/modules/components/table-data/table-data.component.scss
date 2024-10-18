@@ -1,3 +1,11 @@
+article{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    ion-item{
+        width: -webkit-fill-available;
+    }
+}
 
 section{
     display: flex;
@@ -12,3 +20,14 @@ section{
     }
 
 }
+
+.hidden{
+    padding: 0 12px;
+
+    .chips{
+        padding: 12px 0;
+        display: flex; 
+    }
+}
+
+

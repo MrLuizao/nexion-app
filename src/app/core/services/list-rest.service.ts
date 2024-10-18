@@ -8,12 +8,18 @@ import { Observable } from 'rxjs';
 export class ListRestService {
 
   private apiUrl = 'https://restcountries.com/v3.1/all';
+  public mockApi = 'assets/list-mock.json';
 
   constructor(private http: HttpClient) {}
 
-  // Método para obtener todos los países
   getAllCountries(): Observable<any> {
     return this.http.get<any>(this.apiUrl);
   }
-  
+
+
+  getMockProcts(): Observable<any> {
+    return this.http.get(this.mockApi);
+  }
+
+
 }
