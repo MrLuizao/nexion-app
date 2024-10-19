@@ -5,6 +5,12 @@ import { catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../services/authentication.service';
 
+/**
+ * El interceptor agrega un token de autenticación a las solicitudes HTTP salientes 
+ * y maneja errores de autenticación. Si se recibe un error 401, se cierra la sesión 
+ * y se redirige al usuario a la página de inicio de sesión.
+ */
+
 @Injectable()
 export class InterceptorAuth implements HttpInterceptor {
   constructor(

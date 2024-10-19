@@ -7,6 +7,13 @@ import { DecodedToken, LoginRequest, LoginResponse } from 'src/app/shared/interf
 @Injectable({
   providedIn: 'root'
 })
+
+/**
+ * Este servicio gestiona la autenticación de usuarios en la aplicación. 
+ * Proporciona métodos para iniciar sesión, cerrar sesión, verificar el estado de autenticación, 
+ * y manejar el token JWT almacenado en el localStorage.
+ */
+
 export class AuthenticationService {
 
   private readonly JWT_TOKEN_KEY = 'jwt_token';

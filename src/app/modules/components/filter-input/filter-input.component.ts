@@ -7,6 +7,14 @@ import { FilterConfig } from 'src/app/shared/interfaces/filter-config.interface'
   templateUrl: './filter-input.component.html',
   styleUrls: ['./filter-input.component.scss'],
 })
+
+/**
+ * Este componente permite a los usuarios aplicar filtros sobre una lista de datos.
+ * Los filtros incluyen un campo de texto, selección de regiones y un rango de fechas.
+ * Se encarga de emitir eventos cuando los filtros cambian y proporciona
+ * métodos para abrir modales de selección de fechas y regiones.
+ */
+
 export class FilterInputComponent  implements OnInit {
 
   @Input() startDate?: Date;

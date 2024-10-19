@@ -10,6 +10,13 @@ import { ModalCheckComponent } from '../modal-check/modal-check.component';
   templateUrl: './table-data.component.html',
   styleUrls: ['./table-data.component.scss'],
 })
+
+/**
+ * Este componente gestiona la visualización y paginación de una lista de países.
+ * Permite filtrar la lista según texto, región y rango de fechas, además de gestionar
+ * la paginación de los elementos mostrados.
+ */
+
 export class TableDataComponent  implements OnInit {
   
   isLoading = false;
@@ -37,33 +44,32 @@ export class TableDataComponent  implements OnInit {
 
   loadCountries(){
 
-    // MOCK TEST LVR START
-    this.countries = COUNTRIES;
-    this.totalCountries = this.countries.length;
-    this.filteredCountries = [...this.countries];
-    this.updatePaginatedCountries();
-    // MOCK TEST LVR FINISH
+    // // MOCK TEST LVR START
+    // this.countries = COUNTRIES;
+    // this.totalCountries = this.countries.length;
+    // this.filteredCountries = [...this.countries];
+    // this.updatePaginatedCountries();
+    // // MOCK TEST LVR FINISH
 
-    // this.listDataService.getAllCountries().subscribe({
-    //   next: (next) => {
+    this.listDataService.getAllCountries().subscribe({
+      next: (next) => {
 
-    //     this.countries = next;  // Guardar todos los países
-    //     this.totalCountries = next.length;  // Total de países
-    //     console.log(this.countries);
+        this.countries = next;
+        this.totalCountries = next.length;
+        console.log(this.countries);
 
-    //       // this.updatePaginatedCountries()
-    //     this.filteredCountries = [...this.countries]; // Inicializa el array filtrado
-    //     this.updatePaginatedCountries(); // Actualiza paginados inicialmente
+        this.filteredCountries = [...this.countries];
+        this.updatePaginatedCountries();
 
-    //   },
-    //   error: (error) => {
-    //     console.error('Error en login:', error);
-    //     this.isLoading = false;
-    //   },
-    //   complete: () => {
-    //     this.isLoading = false;
-    //   }
-    // });
+      },
+      error: (error) => {
+        console.error('Error en login:', error);
+        this.isLoading = false;
+      },
+      complete: () => {
+        this.isLoading = false;
+      }
+    });
   }
 
   getPaginatedCountries(): any[] {

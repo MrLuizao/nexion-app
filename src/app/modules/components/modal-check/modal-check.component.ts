@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController, ToastController } from '@ionic/angular';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-modal-check',
@@ -12,17 +12,13 @@ export class ModalCheckComponent  implements OnInit {
   selectedRegions: { [key: string]: boolean } = {};
 
   constructor(
-    public modalController: ModalController,
-    private toastController: ToastController
+    public modalController: ModalController
   ) { }
   
   ngOnInit() {}
 
   setElements() {
-    // Obtener solo las regiones seleccionadas (donde el valor sea true)
     const selectedRegionsList = Object.keys(this.selectedRegions).filter(region => this.selectedRegions[region]);
-  
-    // Devolver los datos seleccionados al componente padre
     this.modalController.dismiss({
       selectedRegions: selectedRegionsList
     });

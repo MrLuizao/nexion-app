@@ -1,35 +1,23 @@
-// import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-// import { IonicModule } from '@ionic/angular';
-// import { HttpClientTestingModule } from '@angular/common/http/testing';
-
-// import { FilterInputComponent } from './filter-input.component';
-
-// describe('FilterInputComponent', () => {
-//   let component: FilterInputComponent;
-//   let fixture: ComponentFixture<FilterInputComponent>;
-
-//   beforeEach(waitForAsync(() => {
-//     TestBed.configureTestingModule({
-//       declarations: [ FilterInputComponent ],
-//       imports: [HttpClientTestingModule, IonicModule.forRoot()]
-//     }).compileComponents();
-
-//     fixture = TestBed.createComponent(FilterInputComponent);
-//     component = fixture.componentInstance;
-//     fixture.detectChanges();
-//   }));
-
-//   it('should create', () => {
-//     expect(component).toBeTruthy();
-//   });
-// });
-
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { FilterInputComponent } from './filter-input.component';
-import { EventEmitter } from '@angular/core';
-import { FilterConfig } from 'src/app/shared/interfaces/filter-config.interface';
+
+/**
+ * Este conjunto de pruebas unitarias verifica la funcionalidad del componente
+ * `FilterInputComponent`, que se encarga de gestionar la entrada de filtros. Las 
+ * pruebas incluyen la creación del componente, la visibilidad de los filtros, 
+ * y la emisión de eventos relacionados con cambios en los filtros de texto, 
+ * selección de fechas y regiones.
+ * 
+ * Las pruebas aseguran que:
+ * - El componente se crea correctamente.
+ * - Se alterna la visibilidad de los filtros.
+ * - Se emiten eventos adecuados al cambiar el texto del filtro.
+ * - Se emiten eventos al abrir los selectores de fecha y región.
+ * - Se pueden limpiar los filtros de fecha y región, emitiendo el evento de cambio de filtro.
+ * - Se aplican filtros y se emiten eventos con la configuración actual de filtros.
+ */
 
 describe('FilterInputComponent', () => {
   let component: FilterInputComponent;

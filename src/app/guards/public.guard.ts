@@ -6,6 +6,13 @@ import { Injectable } from "@angular/core";
 @Injectable({
   providedIn: 'root'
 })
+
+/**
+ * PublicGuard permite el acceso a rutas públicas solo si el usuario no está autenticado. 
+ * Si el usuario ya está autenticado, se redirige a la página de inicio ('/home'). 
+ * Implementa la interfaz CanActivate para controlar el acceso a las rutas públicas.
+ */
+
 export class PublicGuard implements CanActivate {
   constructor(
     private authService: AuthenticationService,
@@ -13,7 +20,7 @@ export class PublicGuard implements CanActivate {
   ) {}
 
   canActivate(): Observable<boolean> {
-    return this.authService.isAuthenticated$().pipe( // Llamar a isAuthenticated$ como método
+    return this.authService.isAuthenticated$().pipe(
       map(isAuthenticated => {
         if (isAuthenticated) {
           this.router.navigate(['/home']);

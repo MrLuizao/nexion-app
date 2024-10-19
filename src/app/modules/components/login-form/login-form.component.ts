@@ -9,6 +9,13 @@ import { AuthenticationService } from 'src/app/core/services/authentication.serv
   templateUrl: './login-form.component.html',
   styleUrls: ['./login-form.component.scss'],
 })
+
+/**
+ * Este componente gestiona el formulario de inicio de sesión para los usuarios.
+ * Se encarga de la validación del formulario, la autenticación del usuario y la
+ * navegación a la página principal después de un inicio de sesión exitoso.
+ */
+
 export class LoginFormComponent  implements OnInit {
 
   loginForm!: FormGroup;

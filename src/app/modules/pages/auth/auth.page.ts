@@ -6,6 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./auth.page.scss'],
 })
 
+/**
+ * AuthPage representa la página de autenticación de la aplicación,
+ * que incluye un encabezado y un contenido 
+ * ESTE IMPLEMENTA EL COMPONENTE DE LOGIN.
+ */
+
 export class AuthPage implements OnInit {
 
   constructor() {
